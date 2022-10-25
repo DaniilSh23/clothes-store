@@ -1,0 +1,14 @@
+# результат запроса на получение списка товаров
+
+{'count': 6, 'next': 'http://127.0.0.1:8000/api/items/?items_category_id=1&page=2', 'previous': None, 
+	'results': 
+		[
+			{'id': 1, 'items_name': 'Товар тест 1', 'description': 'тестовое описание товара', 'price': 499.9, 'number_of_items': 27, 'clothes_size': None, 'image_for_items_id': 'AgACAgIAAxkBAAId_mNTrjhv9gAB6y3r3BPMxak7cmvC2QAC5L0xGxAZoUrBqV5Ge9-eCQEAAwIAA3kAAyoE', 'items_category': 1}, 
+			{'id': 5, 'items_name': 'Товар № 7', 'description': 'Тестовое описание товара № 7', 'price': 999.0, 'number_of_items': 1111, 'clothes_size': None, 'image_for_items_id': 'AgACAgIAAxkBAAId_mNTrjhv9gAB6y3r3BPMxak7cmvC2QAC5L0xGxAZoUrBqV5Ge9-eCQEAAwIAA3kAAyoE', 'items_category': 1}, 
+			{'id': 8, 'items_name': 'Товар № 777', 'description': 'Тестовое описание товара 777', 'price': 499.0, 'number_of_items': 44, 'clothes_size': None, 'image_for_items_id': 'AgACAgIAAxkBAAId_mNTrjhv9gAB6y3r3BPMxak7cmvC2QAC5L0xGxAZoUrBqV5Ge9-eCQEAAwIAA3kAAyoE', 'items_category': 1}]}
+
+# возвращаемое сообщение после отправки медиа группы
+[<Message {"message_id": 7889, "from": {"id": 5265303938, "is_bot": true, "first_name": "test-bot", "username": "CourseTrainBot"}, "chat": {"id": 1978587604, "first_name": "Daniil", "last_name": "Shestakov", "username": "danya_sevas23", "type": "private"}, "date": 1666517325, "photo": [{"file_id": "AgACAgIAAxkDAAIe0WNVCU2tVD8GhT7yko8nYfOb_ffYAALkvTEbEBmhSsGpXkZ7354JAQADAgADcwADKgQ", "file_unique_id": "AQAD5L0xGxAZoUp4", "file_size": 1816, "width": 72, "height": 90}, {"file_id": "AgACAgIAAxkDAAIe0WNVCU2tVD8GhT7yko8nYfOb_ffYAALkvTEbEBmhSsGpXkZ7354JAQADAgADbQADKgQ", "file_unique_id": "AQAD5L0xGxAZoUpy", "file_size": 24131, "width": 256, "height": 320}, {"file_id": "AgACAgIAAxkDAAIe0WNVCU2tVD8GhT7yko8nYfOb_ffYAALkvTEbEBmhSsGpXkZ7354JAQADAgADeAADKgQ", "file_unique_id": "AQAD5L0xGxAZoUp9", "file_size": 97489, "width": 640, "height": 800}, {"file_id": "AgACAgIAAxkDAAIe0WNVCU2tVD8GhT7yko8nYfOb_ffYAALkvTEbEBmhSsGpXkZ7354JAQADAgADeQADKgQ", "file_unique_id": "AQAD5L0xGxAZoUp-", "file_size": 171467, "width": 1024, "height": 1280}]}>]
+
+
+ID телеги заказчика = 1112227426 *проверить
