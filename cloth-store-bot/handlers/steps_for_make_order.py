@@ -11,7 +11,6 @@ from settings.config import DP, BOT, MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET, STAF
 from states.states import MakeOrderStates
 
 
-# Новые функции
 async def first_step_for_make_order(call: CallbackQuery):
     """Первый шаг оформления заказа. Запрашиваем адрес доставки"""
 
@@ -28,9 +27,8 @@ async def first_step_for_make_order(call: CallbackQuery):
         await call.answer(text=f'{emojize(":robot:")} Приступаем к оформлению заказа...')
         await MakeOrderStates.delivery_address.set()
         await call.message.edit_text(
-            text=f'{emojize(":robot:")} Оформляем Ваш заказ\n\n'
-                 f'{emojize(":cityscape_at_dusk:")}Введите адрес доставки{emojize(":backhand_index_pointing_down:")}\n\n'
-                 f'{emojize(":information:")}Просто отправьте его боту ответным сообщением.',
+            text=f'Оформляем твой заказ✨\n\n'
+                 f'Введи адрес доставки👇',
             reply_markup=InlineKeyboardMarkup(row_width=1).insert(CANCEL_ORDER_BUTTON)
         )
 
@@ -40,8 +38,7 @@ async def second_step_make_order(message: types.Message, state: FSMContext):
 
     await state.update_data(delivery_address=message.text)
     await MakeOrderStates.phone_number.set()
-    await message.answer(text=f'{emojize(":mobile_phone:")}Введите контактный номер телефона{emojize(":backhand_index_pointing_down:")}\n\n'
-                              f'{emojize(":information:")}Тоже отправьте его сообщением.',
+    await message.answer(text=f'Твой контактный номер телефона👇',
                          reply_markup=InlineKeyboardMarkup(row_width=1).insert(CANCEL_ORDER_BUTTON))
 
 
@@ -50,7 +47,7 @@ async def third_step_make_order(message: types.Message, state: FSMContext):
 
     await state.update_data(phone_number=message.text)
     await MakeOrderStates.your_name.set()
-    await message.answer(text=f'{emojize(":white_question_mark:")}Как к Вам можно обратиться{emojize(":backhand_index_pointing_down:")}\n',
+    await message.answer(text=f'Как к тебе можно обращаться?👇',
                          reply_markup=InlineKeyboardMarkup(row_width=1).insert(CANCEL_ORDER_BUTTON))
 
 
@@ -59,9 +56,9 @@ async def fourth_step_make_order(message: types.Message, state: FSMContext):
 
     await state.update_data(your_name=message.text)
     await MakeOrderStates.your_size.set()
-    await message.answer(text=f'{emojize(":coat:")}Предпочитаемые размеры для товаров из заказа.\n\n'
-                              f'{emojize(":information:")}Укажите в свободной форме.\n'
-                              f'(Например: XS, S, M, L, XL, 46, 48, 50).{emojize(":backhand_index_pointing_down:")}\n',
+    await message.answer(text=f'Твой предпочитаемый размер для товаров из заказа.\n\n'
+                              f'Укажи в свободной форме.\n'
+                              f'(Например: S, M, L или 42-44)👇',
                          reply_markup=InlineKeyboardMarkup(row_width=1).insert(CANCEL_ORDER_BUTTON))
 
 
@@ -86,13 +83,13 @@ async def fifth_step_make_order(message: types.Message, state: FSMContext):
 async def cancel_order(call: CallbackQuery, state: FSMContext):
     '''Обработчик для инлайн кнопки отмена оформления заказа.'''
 
-    await call.answer(text=f'Вы отменили оформление заказа...{emojize(":face_with_rolling_eyes:")}', show_alert=True)
+    await call.answer(text=f'Ты отменил оформление заказа...{emojize(":face_with_rolling_eyes:")}', show_alert=True)
     await state.reset_state(with_data=True)
     await call.message.delete()
 
-    this_message = await BOT.send_message(text=f'Вы перешли к главному меню', reply_markup=HEAD_PAGE_INLINE_KEYBOARD, chat_id=call.message.chat.id)
+    this_message = await BOT.send_message(text=f'Ты перешёл к главному меню', reply_markup=HEAD_PAGE_INLINE_KEYBOARD, chat_id=call.message.chat.id)
     if call.from_user.id in STAFF_ID:
-        await this_message.edit_text(text=f'Вы администратор, для вас пару кнопок вдовесок',
+        await this_message.edit_text(text=f'Вы администратор, для вас пару кнопок в довесок',
                                      reply_markup=ADMINS_KEYBOARD)
 
 

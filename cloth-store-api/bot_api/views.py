@@ -3,6 +3,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from bot_api.models import Categories, Items, OrderBasket, Order, OrderArchive, BotUsers
+from bot_api.pagination import CategoryPagination
 from bot_api.serializers import ItemsSerializer, CategoriesSerializer, OrderBasketSerializer, OrderSerializer, \
     OrderArchiveSerializer, BotUsersSerializer
 
@@ -13,7 +14,7 @@ class CategoryView(generics.ListAPIView):
 
     serializer_class = CategoriesSerializer
     # выбор класса-пагинатора
-    pagination_class = PageNumberPagination  # кажется, его не обязательно прописывать
+    pagination_class = CategoryPagination   # Переопределённый мной класс пагинации для категорий товаров (по 4 на странице)
 
     def get_queryset(self):
         """

@@ -46,7 +46,7 @@ async def you_are_in_basket(call: CallbackQuery):
     response_basket = await get_user_basket(user_tlg_id=call.from_user.id)
     if len(response_basket) == 0:
         await call.message.edit_text(
-            text=f'{emojize("::wastebasket::")}Ваша корзина пуста...',
+            text=f'{emojize(":wastebasket:")}Твоя корзина пуста...',
             reply_markup=HEAD_PAGE_INLINE_KEYBOARD
         )
 
@@ -86,9 +86,9 @@ async def you_are_in_basket(call: CallbackQuery):
             item_name = i_elem[1]
             items_numbers_in_basket = i_elem[3]
             total_price = round(i_elem[2] * items_numbers_in_basket, 2)
-            text_for_message = f'{emojize(":bookmark:")}Название товара: {item_name}\n' \
-                               f'{emojize(":input_numbers:")}Количество: {items_numbers_in_basket} шт.\n' \
-                               f'{emojize(":money_with_wings:")}Итоговая цена позиции: {total_price} руб.'
+            text_for_message = f'{emojize(":large_blue_diamond:")}Название товара: {item_name}\n' \
+                               f'{emojize(":large_orange_diamond:")}Количество: {items_numbers_in_basket} шт.\n' \
+                               f'{emojize(":large_blue_diamond:")}Итоговая цена позиции: {total_price} руб.'
             i_message = await call.message.answer(text=text_for_message)
             inline_keyboard = basket_formation_inline(i_message.message_id, user_tlg_id, item_id,
                                                       items_numbers_in_basket,

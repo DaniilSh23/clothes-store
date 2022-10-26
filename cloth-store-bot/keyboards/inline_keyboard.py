@@ -6,14 +6,14 @@ from keyboards.callback_data_bot import callback_for_next_or_prev_button, \
     callback_for_add_item_to_basket, callback_back_to_categories, \
     callback_for_minus_plus_button, callback_for_orders_lst, callback_for_stuff, \
     callback_for_accept_order, callback_for_headpage_inline_keyboard
-from keyboards.common_keyboards import CANCEL_ORDER_BUTTON
+from keyboards.common_keyboards import CANCEL_ORDER_BUTTON, SIZE_TABLE_BUTTON
 from settings.config import KEYBOARD, RE_CATEGORY_LINK_PATTERN
 
 
 def category_item_formation_keyboard(response_data, message_id):
     '''Формирователь инлайн клавиатуры для категорий товаров.'''
 
-    inline_keyboard = InlineKeyboardMarkup(row_width=1)
+    inline_keyboard = InlineKeyboardMarkup(row_width=2)
 
     # формируем инлайн клавиатуру с категориями товаров
     results_in_page = response_data.get('results')
@@ -33,17 +33,6 @@ def category_item_formation_keyboard(response_data, message_id):
     next_page_link = response_data.get('next')
     previous_page_link = response_data.get('previous')
     # создаём и добавляем кнопку при наличии ссылки
-    if next_page_link:
-        next_button_link = re.findall(RE_CATEGORY_LINK_PATTERN, next_page_link)[0]
-        next_inline_button = InlineKeyboardButton(
-            text=KEYBOARD['NEXT_STEP_CATEG'],
-            callback_data=callback_for_next_or_prev_button.new(
-                pagination_step=next_button_link,
-                flag='pagination_categories',
-            )
-        )
-        inline_keyboard.insert(next_inline_button)
-
     if previous_page_link:
         previous_button_link = re.findall(RE_CATEGORY_LINK_PATTERN, previous_page_link)
         if len(previous_button_link) == 0:
@@ -58,6 +47,17 @@ def category_item_formation_keyboard(response_data, message_id):
             )
         )
         inline_keyboard.insert(previous_inline_button)
+
+    if next_page_link:
+        next_button_link = re.findall(RE_CATEGORY_LINK_PATTERN, next_page_link)[0]
+        next_inline_button = InlineKeyboardButton(
+            text=KEYBOARD['NEXT_STEP_CATEG'],
+            callback_data=callback_for_next_or_prev_button.new(
+                pagination_step=next_button_link,
+                flag='pagination_categories',
+            )
+        )
+        inline_keyboard.insert(next_inline_button)
 
     # кнопка возврата к главному меню
     headpage_inline_button = InlineKeyboardButton(
@@ -227,34 +227,6 @@ def item_detail_formation_inline(category_id, item_id):
     return inline_keyboard
 
 
-# def item_detail_formation_after_add():
-#     """Формирователь клавиатуры после нажатия кнопки добавления товара."""
-#
-#     inline_keyboard = InlineKeyboardMarkup(row_width=2, inline_keyboard=[
-#         [
-#             InlineKeyboardButton(
-#                 text=KEYBOARD['BASKET'],
-#                 callback_data=callback_for_headpage_inline_keyboard.new(
-#                     flag='go_to_basket'
-#                 )),
-#             InlineKeyboardButton(
-#                 text=KEYBOARD['HEAD_PAGE'],
-#                 callback_data=callback_for_headpage_inline_keyboard.new(
-#                     flag='back_to_head_page',
-#                 )),
-#         ]
-#     ])
-#
-#     # кнопка перехода в корзину
-#     got_to_basket_button = InlineKeyboardButton(
-#         text=f'{emojize(":wastebasket:")}Отредактировать в корзине',
-#         callback_data=callback_for_headpage_inline_keyboard.new(flag='go_to_basket')
-#     )
-#     inline_keyboard.insert(got_to_basket_button)
-#
-#     return inline_keyboard
-
-
 def basket_formation_inline(message_id, user_tlg_id, item_id, items_numbers_in_basket, chat_id):
     """Формирователь для клавиатуры в корзине товаров пользователя."""
 
@@ -374,20 +346,20 @@ def accept_order_inline_keyboard_formation(user_tlg_id):
     return inline_keyboard
 
 
-def formation_cancel_order_button(message_id, user_tlg_id):
-    '''Формирование кнопки отмены заказа.'''
-
-    return InlineKeyboardMarkup(row_width=1, inline_keyboard=[
-        [
-            InlineKeyboardButton(
-                text=KEYBOARD['CANCEL_MAKE_ORDER'],
-                callback_data=callback_for_milling.new(
-                    flag='cancel',
-                    message_id=message_id,
-                    answer='none',
-                    user_tlg_id=user_tlg_id
-                )
-            )
-        ]
-    ])
+# def formation_cancel_order_button(message_id, user_tlg_id):
+#     '''Формирование кнопки отмены заказа.'''
+#
+#     return InlineKeyboardMarkup(row_width=1, inline_keyboard=[
+#         [
+#             InlineKeyboardButton(
+#                 text=KEYBOARD['CANCEL_MAKE_ORDER'],
+#                 callback_data=callback_for_milling.new(
+#                     flag='cancel',
+#                     message_id=message_id,
+#                     answer='none',
+#                     user_tlg_id=user_tlg_id
+#                 )
+#             )
+#         ]
+#     ])
 

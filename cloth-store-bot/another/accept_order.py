@@ -13,7 +13,7 @@ async def check_and_accept_order(user_tlg_id, delivery_address_data, phone_numbe
     # 'items_number_in_basket',
     # 'items_id__number_of_items',
 
-    text_for_message = f'<b><u>Давайте проверим заказ.</u></b>\n' \
+    text_for_message = f'<b><u>Давай проверим твой заказ.</u></b>\n' \
                        f'<b>Адрес доставки:</b> {delivery_address_data}\n' \
                        f'<b>Телефон:</b> {phone_number_data}\n' \
                        f'<b>Имя:</b> {your_name_data}\n' \
@@ -30,7 +30,7 @@ async def check_and_accept_order(user_tlg_id, delivery_address_data, phone_numbe
         text_for_message = '\n'.join([text_for_message, item_text])
 
     total_price_text = f'\n<b><u>ИТОГО: {round(total_price, 2)} руб.</u></b>\n\n' \
-                       f'Если всё верно, нажмите ✅'
+                       f'Если всё верно, нажми ✅'
     text_for_message = '\n'.join([text_for_message, total_price_text])
     return text_for_message
 

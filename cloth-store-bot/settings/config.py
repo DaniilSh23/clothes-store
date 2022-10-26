@@ -19,8 +19,8 @@ COUNT = 0
 
 # кнопки управления
 KEYBOARD = {
-    'CHOOSE_GOODS': emojize('✅ Выбрать товар'),
-    'INFO': emojize(':speech_balloon: О магазине'),
+    'CHOOSE_GOODS': emojize('🖤 Каталог товаров'),
+    'INFO': emojize(':speech_balloon: Обратная связь'),
     'BASKET': emojize(':wastebasket: Корзина'),
     'MY_ORDER': emojize(':spiral_notepad: Мои заказы'),
     'HEAD_PAGE': emojize(":house_with_garden: Главная"),
