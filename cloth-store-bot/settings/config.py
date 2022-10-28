@@ -9,7 +9,7 @@ TOKEN = os.environ.get('TOKEN', '5265303938:AAE1daGp-VJR0R15J9tHksR38hQlbCXMYdU'
 PAY_TOKEN = os.environ.get('PAY_TOKEN', '1232131')
 
 # Телеграм ID админов
-ADMINS_ID_LST = [1978587604]
+ADMINS_ID_LST = [1978587604, 1112227426]
 STAFF_ID = [1978587604]
 
 # абсолютный путь до текущей директории этого файла
@@ -81,29 +81,8 @@ DP = Dispatcher(BOT, storage=STORAGE)
 # RE_CATEGORY_LINK_PATTERN = re.compile(r'\?\w*\S\w*')
 RE_CATEGORY_LINK_PATTERN = re.compile(r'\?.*')
 
-# опции доставки
-DELIVERY_FROM_CAFE = types.ShippingOption(
-    id='delivery-form-cafe',
-    title='Доставка из кафе',
-    prices=[
-        types.LabeledPrice(
-            'Стандартная доставка', 15000
-        )
-    ]
-)
-
-PICKUP_FROM_CAFE = types.ShippingOption(
-    id='pickup-form-cafe',
-    title='Забрать самостоятельно',
-    prices=[
-        types.LabeledPrice(
-            'Самовывоз', 0
-        )
-    ]
-)
-
-# Адрес магазина.
-STORE_ADDRESS = f'Адрес магазина: город Севастополь, ул. Какая-либо д.23, телефон: +7 978 777 23 32'
+# # Адрес магазина.
+# STORE_ADDRESS = f'Адрес магазина: город Севастополь, ул. Какая-либо д.23, телефон: +7 978 777 23 32'
 
 # Словарь для хранения информации о id сообщений, которые были отправлены в корзине пользователя, в качестве товара
 MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET = dict()

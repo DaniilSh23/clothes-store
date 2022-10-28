@@ -134,9 +134,9 @@ async def change_items_in_basket(call: CallbackQuery, callback_data: dict):
     items_numbers_in_basket = result_response[0][3]
     item_name = result_response[0][1]
     total_price = result_response[0][2] * items_numbers_in_basket
-    text_for_message = f'{emojize(":bookmark:")}Название товара: {item_name}\n' \
-                       f'{emojize(":input_numbers:")}Количество: {items_numbers_in_basket} шт.\n' \
-                       f'{emojize(":money_with_wings:")}Итоговая цена позиции: {round(total_price, 2)} руб.'
+    text_for_message = f'{emojize(":large_blue_diamond:")}Название товара: {item_name}\n' \
+                       f'{emojize(":large_orange_diamond:")}Количество: {items_numbers_in_basket} шт.\n' \
+                       f'{emojize(":large_blue_diamond:")}Итоговая цена позиции: {total_price} руб.'
     inline_keyboard = basket_formation_inline(message_id, user_tlg_id, item_id, items_numbers_in_basket, chat_id)
     await BOT.edit_message_text(chat_id=chat_id, message_id=message_id, reply_markup=inline_keyboard,
                                 text=text_for_message)

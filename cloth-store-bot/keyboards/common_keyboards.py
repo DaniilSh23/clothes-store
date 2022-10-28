@@ -26,12 +26,18 @@ INLINE_KEYBOARD_IN_BASKET = InlineKeyboardMarkup(row_width=2, inline_keyboard=[
                 flag='clear_the_basket',
             ))
     ],
+    [
+        InlineKeyboardButton(text=KEYBOARD['SIZE_TABLE'],
+                             callback_data=callback_for_headpage_inline_keyboard.new(
+                                 flag='size_table'
+                             ))
+    ]
 ])
 
 SIZE_TABLE_BUTTON = InlineKeyboardButton(text=KEYBOARD['SIZE_TABLE'],
-                                 callback_data=callback_for_headpage_inline_keyboard.new(
-                                     flag='size_table'
-                                 ))
+                                         callback_data=callback_for_headpage_inline_keyboard.new(
+                                             flag='size_table'
+                                         ))
 
 INLINE_KEYBOARD_BUTTON_HEADPAGE = InlineKeyboardMarkup(row_width=1, inline_keyboard=[
     [

@@ -6,7 +6,7 @@ from aiogram.utils.emoji import emojize
 from another.request_to_API import post_req_for_add_new_user
 from keyboards.callback_data_bot import callback_for_headpage_inline_keyboard
 from keyboards.common_keyboards import HEAD_PAGE_INLINE_KEYBOARD, ADMINS_KEYBOARD, INLINE_KEYBOARD_BUTTON_HEADPAGE
-from settings.config import DP, BOT, STAFF_ID, MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET
+from settings.config import DP, BOT, STAFF_ID, MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET, ADMINS_ID_LST
 
 
 async def head_page(message: types.Message):
@@ -79,15 +79,15 @@ async def return_to_head_page(call: CallbackQuery):
 async def send_media_id(message: types.Message):
     '''Обработчик для отправки ID присланного боту файла'''
 
-    # if message.from_user.id in ADMINS_ID_LST:
-    #     await BOT.send_message(
-    #         chat_id=message.from_user.id,
-    #         text=f'ID файла: {message.photo[-1].file_id}'
-    #     )
-    await BOT.send_message(
-        chat_id=message.from_user.id,
-        text=f'ID файла: {message.photo[-1].file_id}'
-    )
+    if message.from_user.id in ADMINS_ID_LST:
+        await BOT.send_message(
+            chat_id=message.from_user.id,
+            text=f'{message.photo[-1].file_id}'
+        )
+    # await BOT.send_message(
+    #     chat_id=message.from_user.id,
+    #     text=f'ID файла: {message.photo[-1].file_id}'
+    # )
 
 
 async def about_store(call: CallbackQuery):
