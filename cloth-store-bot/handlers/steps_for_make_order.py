@@ -57,8 +57,7 @@ async def fourth_step_make_order(message: types.Message, state: FSMContext):
     await state.update_data(your_name=message.text)
     await MakeOrderStates.your_size.set()
     await message.answer(text=f'Твой предпочитаемый размер для товаров из заказа.\n\n'
-                              f'Укажи в свободной форме.\n'
-                              f'🔻(Например: S, M, L или 42-44)',
+                              f'Укажи в свободной форме.\n(Например: S, M, L, XL или 42-44 и т.д.)🔻',
                          reply_markup=InlineKeyboardMarkup(row_width=1).insert(CANCEL_ORDER_BUTTON))
 
 
