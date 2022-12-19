@@ -59,7 +59,7 @@ COMMANDS = {
 
 # URL адреса для запросов к АPI бота
 # DOMAIN_NAME = 'http://127.0.0.1:8000/'
-DOMAIN_NAME = 'natalie.s.n.a.fvds.ru:65000'
+DOMAIN_NAME = 'natalie.s.n.a.fvds.ru:65000/'
 ITEMS_CATEGORIES_API_URL = f'{DOMAIN_NAME}api/categories/'
 ITEMS_LST_API_URL = f'{DOMAIN_NAME}api/items/'
 BASKET_API_URL = f'{DOMAIN_NAME}api/basket/'
