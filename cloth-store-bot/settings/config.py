@@ -11,7 +11,7 @@ PAY_TOKEN = os.environ.get('PAY_TOKEN', '1232131')
 
 # Телеграм ID админов
 ADMINS_ID_LST = [1978587604, 1112227426]
-STAFF_ID = [1978587604]
+STAFF_ID = [1978587604, 1112227426]
 
 # абсолютный путь до текущей директории этого файла
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,7 @@ COUNT = 0
 
 # кнопки управления
 KEYBOARD = {
-    'CHOOSE_GOODS': emojize('🖤 Каталог товаров'),
+    'CHOOSE_GOODS': emojize('🔻 Каталог товаров'),
     'INFO': emojize(':speech_balloon: Обратная связь'),
     'BASKET': '🛒Корзина',
     'MY_ORDER': emojize(':spiral_notepad: Мои заказы'),

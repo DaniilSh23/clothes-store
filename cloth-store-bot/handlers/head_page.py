@@ -66,7 +66,7 @@ async def return_to_head_page(call: CallbackQuery):
         await BOT.delete_message(chat_id=call.message.chat.id, message_id=call.message.message_id)
 
     # Основной функционал обработчика
-    text_for_message = emojize(f'{emojize(":house_with_garden:")} Вы вернулись к главному меню')
+    text_for_message = emojize(f'🥷ты вернулся в главное меню')
     new_message = await BOT.send_message(
         chat_id=call.message.chat.id,
         text=text_for_message,
@@ -116,7 +116,7 @@ async def size_table(call: CallbackQuery):
                 message_id=i_message
             )
     await call.message.edit_text(
-        text=f'{emojize(":white_exclamation_mark:")}Пожалуйста, ознакомьтесь с таблицей размеров перед оформлением заказа.',
+        text=f'{emojize(":white_exclamation_mark:")}Пожалуйста, ознакомься с таблицей размеров перед оформлением заказа.',
         reply_markup=INLINE_KEYBOARD_BUTTON_HEADPAGE
     )
     # AgACAgIAAxkBAAIFxWOgKu1ro2C8BZ1zdH-i5y0FPkE1AAK2xTEbfy0BSX8vfyHN6ReBAQADAgADeQADLAQ - это рабочий

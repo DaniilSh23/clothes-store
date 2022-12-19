@@ -32,8 +32,7 @@ async def choose_goods(call: CallbackQuery):
 
     else:
         await call.message.edit_text(
-            text=f'{emojize(":backhand_index_pointing_down_medium_skin_tone:")} Выберите '
-                 f'категорию товара',
+            text=f'🔻Выбери, что хочешь',
             reply_markup=inline_keyboard_with_categories)
 
 
