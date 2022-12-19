@@ -71,9 +71,7 @@ async def you_are_in_basket(call: CallbackQuery):
 
         # Основная логика обработчика
         else:
-            await call.message.edit_text(f'{emojize(":robot:")} Корзина {emojize(":wastebasket:")}\n'
-                                         f'Выбранные Вами товары представлены ниже.\n'
-                                         f'Вы можете отредактировать их, если нужно, и оформить заказ.',
+            await call.message.edit_text(f'🛒Корзина\nТы можешь отредактировать и оформить Заказ',
                                          reply_markup=INLINE_KEYBOARD_IN_BASKET)
         user_tlg_id = call.from_user.id
         chat_id = call.message.chat.id

@@ -15,7 +15,7 @@ async def my_order(call: CallbackQuery):
     """Обработчик для нажатия кнопки МОЙ ЗАКАЗ."""
 
     await call.message.edit_text(text=f'🗒Заказы\n\n'
-                                      f'Для оформления, переходи в раздел "🛒Оформить заказ"',
+                                      f'Для оформления, переходи в раздел "🛒Корзина"',
                                  reply_markup=INLINE_KEYBOARD_BUTTON_HEADPAGE)
     user_tlg_id = call.from_user.id
     response = await get_info_about_orders(user_tlg_id)
@@ -162,9 +162,11 @@ async def add_order(call: CallbackQuery, callback_data: dict, state: FSMContext)
         await call.message.edit_text(text=text_for_message, reply_markup=inline_keyboard)
         MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET[call.from_user.id] = [call.message.message_id]
 
-        await BOT.send_message(chat_id=call.message.chat.id, text='Ваш заказ принят.\n'
-                                                                  'Мы перезвоним Вам для подтверждения.',
-                               reply_markup=INLINE_KEYBOARD_BUTTON_HEADPAGE)
+        await BOT.send_message(
+                            chat_id=call.message.chat.id, 
+                            text='Твой заказ принят.\nМы перезвоним тебе для подтверждения.',
+                            reply_markup=INLINE_KEYBOARD_BUTTON_HEADPAGE
+                            )
         # Сбрасываем машину состояний для пользователя
         await state.reset_state(with_data=True)
 
