@@ -107,7 +107,7 @@ async def about_store(call: CallbackQuery):
 
 async def size_table(call: CallbackQuery):
     '''Обработчик для кнопки таблицы размеров'''
-    print('Таблица размеров')
+
     message_for_delete = MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET.get(call.message.chat.id)
     if message_for_delete:
         for i_message in message_for_delete:
