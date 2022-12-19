@@ -120,16 +120,15 @@ async def size_table(call: CallbackQuery):
         reply_markup=INLINE_KEYBOARD_BUTTON_HEADPAGE
     )
     # AgACAgIAAxkBAAIFxWOgKu1ro2C8BZ1zdH-i5y0FPkE1AAK2xTEbfy0BSX8vfyHN6ReBAQADAgADeQADLAQ - это рабочий
-    # AgACAgIAAxkBAAI8k2OgpPujisKIwTn2fYtliKU5jwN7AALmwDEb_LyxSs6Nr-Qt_OTCAQADAgADeQADLAQ - это тестовый
     photo_message_1 = await BOT.send_photo(
         chat_id=call.message.chat.id,
-        photo='AgACAgIAAxkBAAI8k2OgpPujisKIwTn2fYtliKU5jwN7AALmwDEb_LyxSs6Nr-Qt_OTCAQADAgADeQADLAQ'
+        photo='AgACAgIAAxkBAAIFxWOgKu1ro2C8BZ1zdH-i5y0FPkE1AAK2xTEbfy0BSX8vfyHN6ReBAQADAgADeQADLAQ'
     )
     # AgACAgIAAxkBAAIFx2OgX7UnwXPqOiXeKaPeFch6Bf6HAAKmwzEbfy0JSZBiaa7KYBLJAQADAgADeQADLAQ - оригинальный
     # AgACAgIAAxkBAAI8jGOgo0oqDAABGrKRGohHw6AMImzKtAACfscxG4ohAUkUCTN3w0PwhgEAAwIAA3gAAywE - это тестовый
     photo_message_2 = await BOT.send_photo(
         chat_id=call.message.chat.id,
-        photo='AgACAgIAAxkBAAI8jGOgo0oqDAABGrKRGohHw6AMImzKtAACfscxG4ohAUkUCTN3w0PwhgEAAwIAA3gAAywE'
+        photo='AgACAgIAAxkBAAIFx2OgX7UnwXPqOiXeKaPeFch6Bf6HAAKmwzEbfy0JSZBiaa7KYBLJAQADAgADeQADLAQ'
     )
     
     MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET[call.message.chat.id] = [

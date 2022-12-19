@@ -5,7 +5,8 @@ from emoji import emojize
 import re
 
 # токен выдается при регистрации приложения
-TOKEN = os.environ.get('TOKEN', '5265303938:AAE1daGp-VJR0R15J9tHksR38hQlbCXMYdU')
+# 5797279999:AAE9d1SEoRN0EIfrjYcb-CTPqqcN7FkBEBE
+TOKEN = os.environ.get('TOKEN', '5797279999:AAE9d1SEoRN0EIfrjYcb-CTPqqcN7FkBEBE')
 PAY_TOKEN = os.environ.get('PAY_TOKEN', '1232131')
 
 # Телеграм ID админов
@@ -57,7 +58,8 @@ COMMANDS = {
 }
 
 # URL адреса для запросов к АPI бота
-DOMAIN_NAME = 'http://127.0.0.1:8000/'
+# DOMAIN_NAME = 'http://127.0.0.1:8000/'
+DOMAIN_NAME = 'natalie.s.n.a.fvds.ru:65000'
 ITEMS_CATEGORIES_API_URL = f'{DOMAIN_NAME}api/categories/'
 ITEMS_LST_API_URL = f'{DOMAIN_NAME}api/items/'
 BASKET_API_URL = f'{DOMAIN_NAME}api/basket/'
