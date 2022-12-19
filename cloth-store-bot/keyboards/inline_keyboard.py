@@ -21,7 +21,7 @@ def category_item_formation_keyboard(response_data, message_id):
         category_id = i_res_dct['id']
         category_name = i_res_dct['category_name']
         inline_button = InlineKeyboardButton(
-            text=' '.join([emojize(':backhand_index_pointing_right_medium_skin_tone:'), category_name]),
+            text=' '.join([category_name]),
             callback_data=callback_for_category.new(
                 category_id=category_id,
                 flag='category_for_items'

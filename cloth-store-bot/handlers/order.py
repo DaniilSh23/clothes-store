@@ -14,8 +14,8 @@ from settings.config import DP, BOT, STAFF_ID, MESSAGES_ID_FOR_ITEMS_IN_USERS_BA
 async def my_order(call: CallbackQuery):
     """Обработчик для нажатия кнопки МОЙ ЗАКАЗ."""
 
-    await call.message.edit_text(text=f'{emojize(":robot:")} Раздел ЗАКАЗЫ {emojize(":spiral_notepad:")}\n\n'
-                                      f'{emojize(":woman’s_clothes:")} Оформить заказ можно из раздела {KEYBOARD["BASKET"]}',
+    await call.message.edit_text(text=f'🗒Заказы\n\n'
+                                      f'Для оформления, переходи в раздел "🛒Оформить заказ"',
                                  reply_markup=INLINE_KEYBOARD_BUTTON_HEADPAGE)
     user_tlg_id = call.from_user.id
     response = await get_info_about_orders(user_tlg_id)

@@ -66,7 +66,10 @@ HEAD_PAGE_INLINE_KEYBOARD = InlineKeyboardMarkup(
                                  callback_data=callback_for_headpage_inline_keyboard.new(
                                      flag='info'
                                  )),
-        ]
+        ],
+        [
+            SIZE_TABLE_BUTTON
+        ],
     ]
 )
 
@@ -93,6 +96,9 @@ ADMINS_KEYBOARD = InlineKeyboardMarkup(
                                  callback_data=callback_for_headpage_inline_keyboard.new(
                                      flag='info'
                                  )),
+        ],
+        [
+            SIZE_TABLE_BUTTON
         ],
         [
             InlineKeyboardButton(text='Админ панель', url=ADMIN_PANEL),

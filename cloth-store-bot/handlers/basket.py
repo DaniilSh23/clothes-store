@@ -19,9 +19,9 @@ async def add_item_to_basket(call: CallbackQuery, callback_data: dict):
     user_tlg_id = call.from_user.id
     await add_item_in_basket(user_tlg_id=user_tlg_id, item_id=item_id)
 
-    text_for_message = f'✅Товар добавлен в корзину.\n\n' \
-                       f'В корзине Вы можете:\n{emojize(":star:")}отредактировать количество\n' \
-                       f'{emojize(":star:")}оформить заказ\n{emojize(":star:")}удалить позицию.'
+    text_for_message = f'Товар добавлен в Корзину\n\n' \
+                       f'В корзине ты можешь:\n🔼Отредактировать количество\n' \
+                       f'🆗Оформить заказ\n🔽Удалить позицию'
 
     await BOT.edit_message_text(
         text=text_for_message,
@@ -58,9 +58,8 @@ async def you_are_in_basket(call: CallbackQuery):
             for i_key, i_value in user_messages_in_dict.items():
                 if i_key == 'pagination_message':
                     await BOT.edit_message_text(
-                        text=f'{emojize(":robot:")} Корзина {emojize(":wastebasket:")}\n'
-                             f'Выбранные Вами товары представлены ниже.\n'
-                             f'Вы можете отредактировать их, если нужно, и оформить заказ.',
+                        text=f'🛒Корзина\n'
+                             f'Ты можешь отредактировать и оформить заказ',
                         chat_id=call.message.chat.id,
                         message_id=i_value,
                         reply_markup=INLINE_KEYBOARD_IN_BASKET

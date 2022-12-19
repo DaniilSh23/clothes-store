@@ -23,8 +23,7 @@ async def choose_goods(call: CallbackQuery):
         for i_key, i_value in user_messages_in_dict.items():
             if i_key == 'pagination_message':
                 await call.message.edit_text(
-                    text=f'{emojize(":backhand_index_pointing_down_medium_skin_tone:")} Выберите '
-                         f'категорию товара',
+                    text=f'🔻Выбери, что хочешь',
                     reply_markup=inline_keyboard_with_categories)
                 continue
             for j_elem in i_value:
@@ -187,7 +186,6 @@ def register_items_menu_handlers():
     DP.register_callback_query_handler(choose_goods, callback_for_headpage_inline_keyboard.filter(flag='choose_goods'))
     DP.register_callback_query_handler(detail_goods_list_by_category,
                                        callback_for_category.filter(flag='category_for_items'))
-
     DP.register_callback_query_handler(pagination_step_for_items_categories,
                                        callback_for_next_or_prev_button.filter(flag='pagination_categories'))
     DP.register_callback_query_handler(choose_goods,

@@ -27,8 +27,8 @@ async def first_step_for_make_order(call: CallbackQuery):
         await call.answer(text=f'{emojize(":robot:")} Приступаем к оформлению заказа...')
         await MakeOrderStates.delivery_address.set()
         await call.message.edit_text(
-            text=f'Оформляем твой заказ✨\n\n'
-                 f'Введи адрес доставки👇',
+            text=f'🥷Оформляю заказ\n\n'
+                 f'🔻Адрес доставки',
             reply_markup=InlineKeyboardMarkup(row_width=1).insert(CANCEL_ORDER_BUTTON)
         )
 
@@ -38,7 +38,7 @@ async def second_step_make_order(message: types.Message, state: FSMContext):
 
     await state.update_data(delivery_address=message.text)
     await MakeOrderStates.phone_number.set()
-    await message.answer(text=f'Твой контактный номер телефона👇',
+    await message.answer(text=f'🔻Твой контактный номер телефона',
                          reply_markup=InlineKeyboardMarkup(row_width=1).insert(CANCEL_ORDER_BUTTON))
 
 
@@ -47,7 +47,7 @@ async def third_step_make_order(message: types.Message, state: FSMContext):
 
     await state.update_data(phone_number=message.text)
     await MakeOrderStates.your_name.set()
-    await message.answer(text=f'Как к тебе можно обращаться?👇',
+    await message.answer(text=f'🔻Как к тебе можно обращаться?',
                          reply_markup=InlineKeyboardMarkup(row_width=1).insert(CANCEL_ORDER_BUTTON))
 
 
@@ -58,7 +58,7 @@ async def fourth_step_make_order(message: types.Message, state: FSMContext):
     await MakeOrderStates.your_size.set()
     await message.answer(text=f'Твой предпочитаемый размер для товаров из заказа.\n\n'
                               f'Укажи в свободной форме.\n'
-                              f'(Например: S, M, L или 42-44)👇',
+                              f'🔻(Например: S, M, L или 42-44)',
                          reply_markup=InlineKeyboardMarkup(row_width=1).insert(CANCEL_ORDER_BUTTON))
 
 

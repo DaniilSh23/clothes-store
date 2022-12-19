@@ -21,13 +21,14 @@ async def head_page(message: types.Message):
         user_data['user_name'] = user_name
     response = await post_req_for_add_new_user(user_data)
     if response:
-        text_for_message = emojize(':waving_hand:Привет!\n\n'
-                                   ':black_large_square: Этот бот поможет тебе быстро ознакомиться с '
-                                   'нашим ассортиментом и оформить заказ, не выходя из мессенджера.\n\n'
-                                   ':white_large_square: Ты можешь легко добавить товар в корзину, '
-                                   'оформить заказ и получить его с доставкой на руки.\n\n'
-                                   ':black_large_square:Приглашаем ознакомиться с нашим ассортиментом, '
-                                   'нажав на кнопку "Каталог товаров🖤".')
+        text_for_message = emojize('🥷 Приветствую тебя в нашем Concept Store.  '
+                                   'Индивидуальность - наша религия. HD - наш образ мыслей и стиль жизнь. '
+                                   'Корпоративный цвет - черный.\n\n'
+                                   'Здесь ты можешь найти одежду с принтами на тему HD или реализовать свою идею.\n'
+                                   '🔻Каталог товаров🔻\n'
+                                   '🗒Мои заказы\n'
+                                   '🛒Корзина\n'
+                                   '💬Обратная связь\n\n')
         await message.answer(
             text=text_for_message,
             reply_markup=HEAD_PAGE_INLINE_KEYBOARD
@@ -78,7 +79,7 @@ async def return_to_head_page(call: CallbackQuery):
 
 async def send_media_id(message: types.Message):
     '''Обработчик для отправки ID присланного боту файла'''
-
+    print(message)
     if message.from_user.id in ADMINS_ID_LST:
         await BOT.send_message(
             chat_id=message.from_user.id,
@@ -93,22 +94,20 @@ async def send_media_id(message: types.Message):
 async def about_store(call: CallbackQuery):
     """Обработчик для раздела с информацией о магазине."""
 
-    text_about_cafe = f'{emojize(":department_store:")}<b>Магазин HDmerch</b>\n\n' \
-                      f'{emojize(":four_o’clock:")}Режим работы: 7:00-23:00\n' \
-                      f'{emojize(":telephone_receiver:")}Контактый телефон: +7(966)070-70-79 Арунима\n\n' \
-                      f'<ins>Как мы работаем:</ins>\n' \
-                      f'{emojize(":keycap_1:")}Ты оформляешь заказ в боте.\n' \
-                      f'{emojize(":keycap_2:")}Мы связываемся с тобой, чтобы подтвердить заказ🤝\n' \
-                      f'{emojize(":keycap_3:")}После оплаты мы отправляем заказ удобной для тебя ' \
-                      f'службой доставки или если ты из Мск, то можем договориться ' \
-                      f'о встрече и передать тебе заказ лично в руки.\n' \
-                      f'{emojize(":keycap_4:")}Получаешь в скором времени заказ😏\n\n'
+    text_about_cafe = f'<b>HDmerch Concept Store</b>\n\n' \
+                      f'+7 966 070 70 79 Арунима\n\n' \
+                      f'📌Как работаем:\n' \
+                      f'- Ты оформляешь заказ в этом боте\n' \
+                      f'- Мы связываемся с тобой, чтобы подтвердить заказ и обсудить все детали\n' \
+                      f'- После разговора, ты оплачиваешь заказ\n' \
+                      f'- Мы посылаем заказ (Boxberry, СДЭК, Почта России, по Москве - курьер)' \
+                      f'- Высылаем тебе трек номер для отслеживания'
     await call.message.edit_text(text=text_about_cafe, reply_markup=INLINE_KEYBOARD_BUTTON_HEADPAGE)
 
 
 async def size_table(call: CallbackQuery):
     '''Обработчик для кнопки таблицы размеров'''
-
+    print('Таблица размеров')
     message_for_delete = MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET.get(call.message.chat.id)
     if message_for_delete:
         for i_message in message_for_delete:
@@ -120,11 +119,23 @@ async def size_table(call: CallbackQuery):
         text=f'{emojize(":white_exclamation_mark:")}Пожалуйста, ознакомьтесь с таблицей размеров перед оформлением заказа.',
         reply_markup=INLINE_KEYBOARD_BUTTON_HEADPAGE
     )
-    photo_message = await BOT.send_photo(
+    # AgACAgIAAxkBAAIFxWOgKu1ro2C8BZ1zdH-i5y0FPkE1AAK2xTEbfy0BSX8vfyHN6ReBAQADAgADeQADLAQ - это рабочий
+    # AgACAgIAAxkBAAI8k2OgpPujisKIwTn2fYtliKU5jwN7AALmwDEb_LyxSs6Nr-Qt_OTCAQADAgADeQADLAQ - это тестовый
+    photo_message_1 = await BOT.send_photo(
         chat_id=call.message.chat.id,
-        photo='AgACAgIAAxkBAAIjKmNW1hnKhxilPCFrdvoo2Wg_VH1cAALmwDEb_LyxSs6Nr-Qt_OTCAQADAgADeQADKgQ'
+        photo='AgACAgIAAxkBAAI8k2OgpPujisKIwTn2fYtliKU5jwN7AALmwDEb_LyxSs6Nr-Qt_OTCAQADAgADeQADLAQ'
     )
-    MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET[call.message.chat.id] = [photo_message.message_id]
+    # AgACAgIAAxkBAAIFx2OgX7UnwXPqOiXeKaPeFch6Bf6HAAKmwzEbfy0JSZBiaa7KYBLJAQADAgADeQADLAQ - оригинальный
+    # AgACAgIAAxkBAAI8jGOgo0oqDAABGrKRGohHw6AMImzKtAACfscxG4ohAUkUCTN3w0PwhgEAAwIAA3gAAywE - это тестовый
+    photo_message_2 = await BOT.send_photo(
+        chat_id=call.message.chat.id,
+        photo='AgACAgIAAxkBAAI8jGOgo0oqDAABGrKRGohHw6AMImzKtAACfscxG4ohAUkUCTN3w0PwhgEAAwIAA3gAAywE'
+    )
+    
+    MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET[call.message.chat.id] = [
+        photo_message_1.message_id, 
+        photo_message_2.message_id
+        ]
 
 
 def register_head_page_handlers():

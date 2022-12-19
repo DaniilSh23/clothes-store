@@ -35,7 +35,7 @@ async def press_button_complete_order(call: CallbackQuery, callback_data: dict):
         await call.answer(text=f'{emojize(":robot:")}Запрос к серверу не удался. \nЗаказ не был удалён.', show_alert=True)
     else:
         # у персонала редактируется сообщение с заказом
-        await call.message.edit_text(text=f'{emojize(":robot:")}Заказ № {order_id} выполнен✅')
+        await call.message.edit_text(text=f'🥷Заказ № {order_id} беру в работу!💥')
 
 
 async def orders_lst_for_admins(call: CallbackQuery):
