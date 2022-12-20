@@ -5,7 +5,8 @@ from emoji import emojize
 import re
 
 # токен выдается при регистрации приложения
-# 5797279999:AAE9d1SEoRN0EIfrjYcb-CTPqqcN7FkBEBE
+# 5797279999:AAE9d1SEoRN0EIfrjYcb-CTPqqcN7FkBEBE - work bot
+# 5265303938:AAE1daGp-VJR0R15J9tHksR38hQlbCXMYdU - test-bot
 TOKEN = os.environ.get('TOKEN', '5797279999:AAE9d1SEoRN0EIfrjYcb-CTPqqcN7FkBEBE')
 PAY_TOKEN = os.environ.get('PAY_TOKEN', '1232131')
 

@@ -66,6 +66,9 @@ HEAD_PAGE_INLINE_KEYBOARD = InlineKeyboardMarkup(
                                  callback_data=callback_for_headpage_inline_keyboard.new(
                                      flag='info'
                                  )),
+            InlineKeyboardButton(text='▪️ HDmerch-Канал ▪️',
+                                url='https://t.me/hdmerch'
+                                ),
         ],
         [
             SIZE_TABLE_BUTTON
@@ -96,6 +99,9 @@ ADMINS_KEYBOARD = InlineKeyboardMarkup(
                                  callback_data=callback_for_headpage_inline_keyboard.new(
                                      flag='info'
                                  )),
+            InlineKeyboardButton(text='▪️ HDmerch-Канал ▪️',
+                                url='https://t.me/hdmerch'
+                                ),
         ],
         [
             SIZE_TABLE_BUTTON
