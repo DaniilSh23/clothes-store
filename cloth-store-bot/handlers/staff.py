@@ -11,7 +11,7 @@ from settings.config import DP, MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET
 async def press_button_complete_order(call: CallbackQuery, callback_data: dict):
     """Обработчик для нажатия персоналом кнопки ЗАКАЗ ГОТОВ."""
 
-    await call.answer(text=f'{emojize(":robot:")} Сообщаю клиенту, переношу заказ в архив...')
+    await call.answer(text=f'🥷 Сообщаю клиенту, переношу заказ в архив...')
     order_id = callback_data['order_id']
 
     # получаем заказ
@@ -32,7 +32,7 @@ async def press_button_complete_order(call: CallbackQuery, callback_data: dict):
     # изменяем эти данные и посылаем их по другому адресу views
     response = await post_req_for_add_order_to_archive(order_data=order_data)
     if response == 400:
-        await call.answer(text=f'{emojize(":robot:")}Запрос к серверу не удался. \nЗаказ не был удалён.', show_alert=True)
+        await call.answer(text=f'🥷 Запрос к серверу не удался. \nЗаказ не был удалён.', show_alert=True)
     else:
         # у персонала редактируется сообщение с заказом
         await call.message.edit_text(text=f'🥷Заказ № {order_id} беру в работу!💥')

@@ -13,7 +13,7 @@ from settings.config import DP, BOT, MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET
 async def choose_goods(call: CallbackQuery):
     """Функция обработки нажатия на инлайн кнопку выбора товара."""
 
-    await call.answer(f'{emojize(":robot:")} Работаю с сервером...')
+    await call.answer(f'🥷 Работаю с сервером...')
     response = await get_items_categories()
     inline_keyboard_with_categories = category_item_formation_keyboard(response_data=response,
                                                                        message_id=call.message.message_id)
@@ -40,7 +40,7 @@ async def detail_goods_list_by_category(call: CallbackQuery, callback_data: dict
     '''Отображение детальной информации о товарах в выбранной категории.'''
 
     await call.message.delete()  # Удаляем ранее отправленное сообщение в чате пользователя
-    await call.answer(text=f'{emojize(":robot:")} Получаю список товаров у сервера...')
+    await call.answer(text=f'🥷 Получаю список товаров у сервера...')
     response = await get_items_list(items_category_id=callback_data['category_id'])
     result_data = response.get('results')
 
@@ -101,17 +101,17 @@ async def detail_goods_list_by_category(call: CallbackQuery, callback_data: dict
 async def pagination_step_for_items_categories(call: CallbackQuery, callback_data: dict):
     """Обработчик для пролистывание категорий товаров."""
 
-    await call.answer(text=f'{emojize(":robot:")} Перелистываю страницу категорий...')
+    await call.answer(text=f'🥷 Перелистываю страницу категорий...')
     pagination_step = callback_data.get('pagination_step')
     response = await get_items_categories(pagination_part_of_link=pagination_step)
     inline_keyboard = category_item_formation_keyboard(response_data=response, message_id=call.message.message_id)
-    await call.message.edit_text(text=f'{emojize(":robot:")}Список категорий товаров.', reply_markup=inline_keyboard)
+    await call.message.edit_text(text=f'🥷 Список категорий товаров.', reply_markup=inline_keyboard)
 
 
 async def pagination_step_for_items_list(call: CallbackQuery, callback_data: dict):
     '''Обработчик для пролистывания категорий товаров.'''
 
-    await call.answer(text=f'{emojize(":robot:")} Перелистываю страницу товаров...')
+    await call.answer(text=f'🥷 Перелистываю страницу товаров...')
     pagination_step = callback_data['pagination_step']
     response = await get_items_list(pagination_part_of_link=pagination_step)
 

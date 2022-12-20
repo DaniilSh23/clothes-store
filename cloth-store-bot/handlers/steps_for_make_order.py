@@ -24,7 +24,7 @@ async def first_step_for_make_order(call: CallbackQuery):
                 await BOT.delete_message(chat_id=call.from_user.id, message_id=i_message_id)
             MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET.pop(call.from_user.id)
 
-        await call.answer(text=f'{emojize(":robot:")} Приступаем к оформлению заказа...')
+        await call.answer(text=f'🥷 Приступаем к оформлению заказа...')
         await MakeOrderStates.delivery_address.set()
         await call.message.edit_text(
             text=f'🥷Оформляю заказ\n\n'

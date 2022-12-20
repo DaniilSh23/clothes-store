@@ -31,7 +31,7 @@ async def head_page(message: types.Message):
         )
     else:
         await message.answer(
-            emojize(':robot: У бота что-то барохлит...:('
+            emojize('🥷 У бота что-то барохлит...:('
                     '\n:construction_worker: Мы уже разбираемся, '
                     'скоро он будет как новенький.:OK_hand:'))
 
@@ -39,7 +39,7 @@ async def head_page(message: types.Message):
 async def return_to_head_page(call: CallbackQuery):
     '''Функция обработки возврата пользователя к главной странице'''
 
-    await call.answer(f'{emojize(":robot:")} Возвращаемся к главному меню...')
+    await call.answer(f'🥷 Возвращаемся к главному меню...')
 
     # удаляем в диалоге с ботом сообщения с товарами
     user_messages_in_dict = MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET.get(call.from_user.id)
@@ -75,7 +75,7 @@ async def return_to_head_page(call: CallbackQuery):
 
 async def send_media_id(message: types.Message):
     '''Обработчик для отправки ID присланного боту файла'''
-    print(message)
+
     if message.from_user.id in ADMINS_ID_LST:
         await BOT.send_message(
             chat_id=message.from_user.id,
@@ -96,7 +96,7 @@ async def about_store(call: CallbackQuery):
                       f'- Ты оформляешь заказ в этом боте\n' \
                       f'- Мы связываемся с тобой, чтобы подтвердить заказ и обсудить все детали\n' \
                       f'- После разговора, ты оплачиваешь заказ\n' \
-                      f'- Мы посылаем заказ (Boxberry, СДЭК, Почта России, по Москве - курьер)' \
+                      f'- Мы посылаем заказ (Boxberry, СДЭК, Почта России, по Москве - курьер)\n' \
                       f'- Высылаем тебе трек номер для отслеживания'
     await call.message.edit_text(text=text_about_cafe, reply_markup=INLINE_KEYBOARD_BUTTON_HEADPAGE)
 

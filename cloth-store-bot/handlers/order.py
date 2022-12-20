@@ -20,7 +20,7 @@ async def my_order(call: CallbackQuery):
     user_tlg_id = call.from_user.id
     response = await get_info_about_orders(user_tlg_id)
     if response == 400:
-        await call.answer(text=f'{emojize(":robot:")} Не удалось выполнить запрос к серверу...\n'
+        await call.answer(text=f'🥷 Не удалось выполнить запрос к серверу...\n'
                                f'Мы разберёмся и скоро всё починим.',
                           show_alert=True)
     else:
@@ -60,7 +60,7 @@ async def my_order(call: CallbackQuery):
 async def remove_order(call: CallbackQuery, callback_data: dict):
     '''Обработчик для удаления заказа из БД.'''
 
-    await call.answer(text=f'{emojize(":robot:")} Выполняю запрос к серверу для удаления заказа...')
+    await call.answer(text=f'🥷 Выполняю запрос к серверу для удаления заказа...')
     order_id = callback_data['order_id']
     response = await req_for_remove_order(order_id=order_id)
     if response == 200:
@@ -70,7 +70,7 @@ async def remove_order(call: CallbackQuery, callback_data: dict):
             await BOT.send_message(chat_id=i_member, text=f'Пользователь отменил заказ № {order_id}',
                                    reply_markup=STAFF_REACTION)
     elif response == 400:
-        await call.answer(text=f'{emojize(":robot:")}Запрос к серверу не удался. \nЗаказ не был удалён.',
+        await call.answer(text=f'🥷 Запрос к серверу не удался. \nЗаказ не был удалён.',
                           show_alert=True)
 
 
@@ -110,7 +110,7 @@ async def add_order(call: CallbackQuery, callback_data: dict, state: FSMContext)
     }
     response_user = await post_req_for_add_new_user(user_data=user_data)
     if not response_user:
-        return await call.message.answer(text=f'{emojize(":robot:")} Ошибка сервера. Заказ не был создан...')
+        return await call.message.answer(text=f'🥷 Ошибка сервера. Заказ не был создан...')
 
     # Формируем данные POST запроса для создания нового заказа.
     order_data = {
@@ -125,7 +125,7 @@ async def add_order(call: CallbackQuery, callback_data: dict, state: FSMContext)
     }
     response = await post_req_for_add_order(order_data)
     if response == 400:
-        await call.message.answer(text=f'{emojize(":robot:")} Ошибка сервера. Заказ не был создан...')
+        await call.message.answer(text=f'🥷 Ошибка сервера. Заказ не был создан...')
     else:
         order_id = response['id']
 

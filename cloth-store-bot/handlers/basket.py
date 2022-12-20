@@ -14,7 +14,7 @@ from settings.config import DP, BOT, MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET
 async def add_item_to_basket(call: CallbackQuery, callback_data: dict):
     """Обработчик для добавления товара в корзину."""
 
-    await call.answer(text=f'{emojize(":robot:")} Добавляю товар в корзину.\nЗапрос к серверу...')
+    await call.answer(text=f'🥷 Добавляю товар в корзину.\nЗапрос к серверу...')
     item_id = callback_data.get('item_id')
     user_tlg_id = call.from_user.id
     await add_item_in_basket(user_tlg_id=user_tlg_id, item_id=item_id)
@@ -97,7 +97,7 @@ async def you_are_in_basket(call: CallbackQuery):
 async def change_items_in_basket(call: CallbackQuery, callback_data: dict):
     '''Обработчик для изменения количества товаров в корзине.'''
 
-    await call.answer(text=f'{emojize(":robot:")} Редактирую корзину.\nЗапрос к серверу...')
+    await call.answer(text=f'🥷 Редактирую корзину.\nЗапрос к серверу...')
     # сперва изменяем кол-во товаров в БД
     user_tlg_id = callback_data['user_tlg_id']
     item_id = callback_data['item_id']
@@ -108,7 +108,7 @@ async def change_items_in_basket(call: CallbackQuery, callback_data: dict):
         change_response = await add_item_in_basket(user_tlg_id, item_id)
         # если получили ответом статус==204, то выходим из функции
         if change_response == 204:
-            await call.answer(text=f'{emojize(":robot:")}Товара закончился...', show_alert=True)
+            await call.answer(text=f'🥷 Товар закончился...', show_alert=True)
             return
     elif flag == 'minus':
         change_response = await remove_item_from_basket(user_tlg_id, item_id)
@@ -123,7 +123,7 @@ async def change_items_in_basket(call: CallbackQuery, callback_data: dict):
 
             # удаляем сообщение с товаром и информируем пользователя
             await BOT.delete_message(chat_id=chat_id, message_id=message_id)
-            await call.answer(text=f'{emojize(":robot:")}Товар удалён из корзины...', show_alert=True)
+            await call.answer(text=f'🥷 Товар удалён из корзины...', show_alert=True)
             return
 
     # теперь делаем заново запрос на получение нужного товара из корзины
@@ -152,11 +152,11 @@ async def clear_the_basket(call: CallbackQuery):
                 await BOT.delete_message(chat_id=call.from_user.id, message_id=i_message_id)
             MESSAGES_ID_FOR_ITEMS_IN_USERS_BASKET.pop(call.from_user.id)
 
-        text_for_message = f'{emojize(":robot:")}Ваша корзина очищена...\n' \
+        text_for_message = f'🥷 Ваша корзина очищена...\n' \
                            f'{emojize(":shopping_bags:")}Давайте добавим в неё что-нибудь.\n\n'
         await call.message.edit_text(text=text_for_message, reply_markup=HEAD_PAGE_INLINE_KEYBOARD)
     else:
-        await call.message.answer(text=f'{emojize(":robot:")}Проблемы с сервером...Не удалось выполнить запрос.',
+        await call.message.answer(text=f'🥷 Проблемы с сервером...Не удалось выполнить запрос.',
                                   reply_markup=HEAD_PAGE_INLINE_KEYBOARD)
 
 
